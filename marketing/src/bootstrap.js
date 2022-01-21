@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import App from './App';
 
 const mount = element => {
   ReactDom.render(
-    <h1>
-      Hello Word!
-    </h1>,
+    <App />,
     element
   )
 }
