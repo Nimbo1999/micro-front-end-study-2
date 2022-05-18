@@ -15,7 +15,7 @@ const prodConfig = {
     new ModuleFederationPlugin({
       name: 'marketing',
       exposes: {
-        './MarketingApp': path.join(__dirname, '..', 'src', 'bootstrap.js')
+        './MarketingApp': './src/bootstrap'
       },
       shared: packageJson.dependencies
     })
