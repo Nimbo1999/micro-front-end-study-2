@@ -9,7 +9,7 @@ const MarketingApp = () => {
   const onNavigate = ({ pathname: nextPathname }) => history.location.pathname !== nextPathname && history.push(nextPathname);
 
   useEffect(() => {
-    const { onParentNavigate } = mount(marketingRef.current, { onNavigate });
+    const { onParentNavigate } = mount(marketingRef.current, { onNavigate, initialPath: history.location.pathname });
     history.listen(onParentNavigate);
   }, []);
 

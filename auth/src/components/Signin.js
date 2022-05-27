@@ -63,7 +63,7 @@ export default function SignIn({ onSignIn }) {
           Sign in
         </Typography>
         <form
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={onSignIn}
           className={classes.form}
           noValidate
         >
@@ -99,7 +99,6 @@ export default function SignIn({ onSignIn }) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={onSignIn}
           >
             Sign In
           </Button>
