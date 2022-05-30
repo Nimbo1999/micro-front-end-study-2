@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,17 +14,21 @@ const generateClassName = createGenerateClassName({
 
 
 export default () => {
-  return (
-    <BrowserRouter>
-        <StylesProvider generateClassName={generateClassName}>
-            <CssBaseline />
-            <Header />
+    const [isSignedIn, setIsSignedIn] = useState(false);
 
-            <Switch>
-                <Route path="/auth" component={AuthLazyApp} />
-                <Route path="/" component={MarketingLazyApp} />
-            </Switch>
-        </StylesProvider>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <StylesProvider generateClassName={generateClassName}>
+                <CssBaseline />
+                <Header isSignedIn={isSignedIn} onSignOut={() => setIsSignedIn(false)} />
+
+                <Switch>
+                    <Route path="/auth">
+                        <AuthLazyApp onSignIn={() => setIsSignedIn(true)} />
+                    </Route>
+                    <Route path="/" component={MarketingLazyApp} />
+                </Switch>
+            </StylesProvider>
+        </BrowserRouter>
+    );
 }
